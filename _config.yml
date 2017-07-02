@@ -1,0 +1,10 @@
+title: "Get 24!"
+url: "https://theconfused.me"
+baseurl: "/get24"
+
+include:
+  - assets
+
+sass:
+    sass_dir: _sass
+    style: compressed

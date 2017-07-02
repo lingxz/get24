@@ -1,0 +1,97 @@
+---
+---
+@import "normalize";
+
+@import "vendor/breakpoint/breakpoint";
+@import "vendor/susy/susy";
+@import "vendor/odometer/odometer-theme-default";
+
+$susy : (
+	columns: 12, 
+	// debug: (image: show),
+	global-box-sizing: border-box,
+	gutter-position: split,
+	// gutters: 1/4,
+	output: float
+);
+
+@include border-box-sizing;
+
+
+/*
+   Breakpoints
+   ========================================================================== */
+
+$small                      : 600px !default;
+$medium                     : 768px !default;
+$medium-wide                : 900px !default;
+$large                      : 1024px !default;
+$x-large                    : 1280px !default;
+
+
+button {
+	cursor: pointer;
+}
+
+#main {
+	padding: 1em;
+	@include container(70%);
+	text-align: center;
+	@include breakpoint(max-width $small) {
+		@include container(100%);
+	}
+	input.player-solution {
+		display: block;
+		margin: auto;
+		max-width: 300px;
+	}
+}
+
+.numbers {
+	font-size: 2em;
+
+	.number__item {
+		font-size: 1em;
+		margin-left: 0.3em;
+		margin-right: 0.3em;
+		font-weight: bold;
+		// border: 1px solid white;
+		cursor: pointer;
+		padding: 0.3em;
+		@include breakpoint($small) {
+			font-size: 2em;
+		}
+		// &:hover {
+		// 	border: 1px solid;
+		// 	border-radius: 5px;
+		// }
+	}
+}
+
+.operators {
+	font-size: 1.7em;
+	margin-bottom: 0.5em;
+	padding: 5px;
+	@include breakpoint($small) {
+		font-size: 2.5em;
+	}
+	.operator__item {
+		cursor: pointer;
+		&:hover { color: #9932CC; }
+	}
+}
+
+.answer {
+	margin-top: 1em;
+	font-size: 2em;
+	@include breakpoint($small) {
+		font-size: 2.3em;
+	}
+}
+
+.notification-banner {
+	margin-top: 1em;
+	font-size: 2em;
+	color: red;
+	font-weight: 700;
+}

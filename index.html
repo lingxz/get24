@@ -1,0 +1,36 @@
+---
+---
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{ site.title }}</title>
+    <link rel='stylesheet' href="{{ '/css/styles.css' | absolute_url }}" />
+  </head>
+  <body>
+    <div id="main">
+      <h1>Get 24!</h1>
+      <div class="numbers">
+        <span class="odometer number__item">0</span>
+        <span class="odometer number__item">0</span>
+        <span class="odometer number__item">0</span>
+        <span class="odometer number__item">0</span>
+      </div>
+      <!-- <form id="player-solution-form"> -->
+        <input id="player-solution" type="text" placeholder="Type your solution here. Example: 3*4 * (7 - 5)">
+        <!-- <input type="submit"> -->
+      <!-- </form> -->
+      <button id="changeNumbers">Change numbers</button>
+      <button id="showAnswer">Show Answer</button>
+      <div class="notification-banner"></div>
+      <div class="answer"></div>
+    </div>
+  </body>
+  <script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/3.13.3/math.min.js"></script>
+  <script src="{{ '/assets/js/vendor/odometer.js' | absolute_url }}"></script>
+  <script src="{{ '/assets/js/solver.js' | absolute_url }}"></script>
+  <script src="{{ '/assets/js/main.js' | absolute_url }}"></script>
+</html>
