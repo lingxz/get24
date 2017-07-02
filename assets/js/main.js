@@ -5,6 +5,8 @@ $(document).ready(function(){
       })
   }, 300);
   $("#changeNumbers").click(function () {
+    $('.answer').text('');
+    $('.notification-banner').text('');
     setTimeout(function(){
       $('.odometer').each(function(i, obj) {
         $(obj).html(getRandomInt(1, 10))
