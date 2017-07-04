@@ -36,6 +36,42 @@ $(document).ready(function(){
   //   // alert(res);
   //   return false;
   // })
+  $("#solve-numbers").on('keyup', function (e) {
+    var n = parseInt($("#solve-numbers").val());
+    var form = $('#numbers-to-solve');
+    if (n) {
+      $('.numbers-title').text('Numbers');
+    } else {
+      $('.numbers-title').empty();
+    }
+    form.empty();
+    var input = "<input type='number' name='number' class='number-element' />";
+    var button = "<button id='solve-specific'>Solve for me!</button>"
+    for (var i = 0; i < n; i++ ) {
+      form.append(input)
+    }
+    if (n) {
+      form.append(button)
+    }
+  });
+
+  $(document).on('click', '#solve-specific', function(e){
+    e.preventDefault();
+    var numbers = [];
+    $('input.number-element').each(function() {
+      numbers.push(parseInt($(this).val()))
+    })
+    var goal = parseInt($('#solve-goal').val())
+    console.log(goal);
+    console.log(numbers);
+    var ans = solve(numbers, goal, []);
+    console.log(ans);
+    if (ans) {
+      $('.solve-answer').html(ans + ' = ' + goal.toString());
+    } else {
+      $('.solve-answer').html("Oops, there seems to be no solution to this.")
+    }
+  });
 
   $("#player-solution").on('keyup', function (e) {
     var expr = $('#player-solution').val();

@@ -66,6 +66,13 @@ function solve(numbers, goal, expr) {
     if (expr.length == 0) {
         expr = numbers.slice().map(String);
     }
+    if (numbers.length == 1) {
+        if (numbers[0] == goal) {
+            return numbers[0];
+        } else {
+            return false;
+        }
+    };
 
     if (numbers.length == 2){
         var arr = combinetwo(numbers[0], numbers[1]);
@@ -74,7 +81,7 @@ function solve(numbers, goal, expr) {
         for (i = 0; i < answers.length; i++) {
             var answer = answers[i];
             if (answer == goal) {
-                return convert_expr_to_string(expr[0], expr[1], answer_exps[i]);
+                return remove_redundant_brackets(convert_expr_to_string(expr[0], expr[1], answer_exps[i]));
             }
         }
         return false;

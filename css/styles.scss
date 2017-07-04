@@ -35,15 +35,24 @@ button {
 
 #main {
 	padding: 1em;
-	@include container(70%);
+	@include container(100%);
 	text-align: center;
-	@include breakpoint(max-width $small) {
-		@include container(100%);
+	@include breakpoint($small) {
+		@include container(70%);
 	}
 	input.player-solution {
 		display: block;
 		margin: auto;
 		max-width: 300px;
+	}
+}
+
+#main2 {
+	padding: 1em;
+	@include container(100%);
+	text-align: center;
+	@include breakpoint($small) {
+		@include container(50%);
 	}
 }
 
