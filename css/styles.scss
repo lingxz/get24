@@ -15,6 +15,8 @@ $susy : (
 	output: float
 );
 
+@include breakpoint-set('default media', screen);
+
 @include border-box-sizing;
 
 
@@ -28,18 +30,15 @@ $medium-wide                : 900px !default;
 $large                      : 1024px !default;
 $x-large                    : 1280px !default;
 
-
 button {
 	cursor: pointer;
 }
 
 #main {
 	padding: 1em;
-	@include container(100%);
+	max-width: 600px;
 	text-align: center;
-	@include breakpoint($small) {
-		@include container(70%);
-	}
+	margin: auto;
 	input.player-solution {
 		display: block;
 		margin: auto;
@@ -49,11 +48,9 @@ button {
 
 #main2 {
 	padding: 1em;
-	@include container(100%);
+	max-width: 600px;
+	margin: auto;
 	text-align: center;
-	@include breakpoint($small) {
-		@include container(50%);
-	}
 }
 
 .numbers {
