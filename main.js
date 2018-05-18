@@ -42,12 +42,15 @@ function solve_wrap() {
   for (var i = 0; i < n_html.length; i++) {
     numbers.push(parseFloat(n_html[i].value));
   }
-  const ans = solve(numbers, config.target)
-  if (ans) {
-    document.getElementById('answer').innerHTML = ans
-  } else {
-    document.getElementById('answer').innerHTML = "no solution"
-  }
+  document.getElementById('answer').innerHTML = "calculating..."
+  setTimeout(function() {
+    const ans = solve(numbers, config.target);
+    if (ans) {
+      document.getElementById('answer').innerHTML = ans;
+    } else {
+      document.getElementById('answer').innerHTML = "no solution";
+    }
+  }, 10);
 }
 
 function generate_new() {
