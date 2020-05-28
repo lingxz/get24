@@ -72,7 +72,7 @@ function solve(numbers, goal, expr) {
             answer_exps = arr[1];
         for (i = 0; i < answers.length; i++) {
             var answer = answers[i];
-            if (answer == goal) {
+            if (Math.abs(answer - goal) < 0.00001) {
                 return remove_redundant_brackets(convert_expr_to_string(expr[0], expr[1], answer_exps[i]));
             }
         }
