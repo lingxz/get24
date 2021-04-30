@@ -18,9 +18,11 @@
       </div>
       <div>
         <button id="changeNumbers" onclick="generate_new()">generate new</button><br>
+        <button id="clearNumbers" onclick="clear_numbers()">clear</button><br>
         <button id="solve" onclick="solve_wrap()">solve</button>
         <div id="answer"></div>
       </div>
+      <br>
       <button id="toggle-config" onclick="toggle_config()">toggle configuration</button>
       <div id="config" style="display: none;">
         <form>
@@ -36,6 +38,8 @@
             <input name="upper-limit" type="number"><br>
             <label for="target">target</label>
             <input name="target" type="number"><br>
+            <label for="showAnswer">show answer</label>
+            <input name="showAnswer" type="checkbox"><br>
             <button type="button" onclick="modify_config()">Submit</button>
           </fieldset>
         </form>

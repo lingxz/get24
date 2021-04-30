@@ -3,6 +3,7 @@ let config = {
   lower_limit: 0,
   upper_limit: 10,
   target: 24,
+  showAnswer: false
 }
 
 function populate_config() {
@@ -10,12 +11,16 @@ function populate_config() {
   document.getElementsByName("lower-limit")[0].value = config.lower_limit;
   document.getElementsByName("upper-limit")[0].value = config.upper_limit;
   document.getElementsByName("target")[0].value = config.target;
+  document.getElementsByName("showAnswer")[0].checked = config.showAnswer;
+  setAutoTab();
 }
 
 function modify_config() {
   config.lower_limit = parseFloat(document.getElementsByName("lower-limit")[0].value);
   config.upper_limit = parseFloat(document.getElementsByName("upper-limit")[0].value);
   config.target = parseFloat(document.getElementsByName("target")[0].value);
+  config.showAnswer = document.getElementsByName("showAnswer")[0].checked;
+  setAutoTab();
 }
 
 function increase_non() {
@@ -45,8 +50,10 @@ function solve_wrap() {
   document.getElementById('answer').innerHTML = "calculating..."
   setTimeout(function() {
     const ans = solve(numbers, config.target);
-    if (ans) {
+    if (ans && config.showAnswer) {
       document.getElementById('answer').innerHTML = ans;
+    } else if (ans && !config.showAnswer) {
+      document.getElementById('answer').innerHTML = "<details><summary>solution exists (click to show)</summary><br>" + ans + "</details>";
     } else {
       document.getElementById('answer').innerHTML = "no solution";
     }
@@ -70,6 +77,13 @@ function generate_new() {
   document.getElementById('answer').innerHTML = ""
 }
 
+function clear_numbers() {
+  var n_html = document.getElementsByClassName("number");
+  for (var i = 0; i < n_html.length; i++) {
+    n_html[i].value = ""
+  }
+}
+
 /**
  * Returns a random integer between min (inclusive) and max (inclusive)
  * Using Math.round() will give you a non-uniform distribution!
@@ -87,7 +101,23 @@ function toggle_config() {
   }
 }
 
+function setAutoTab() {
+  var n_html = document.getElementsByClassName("number");
+  for (var i = 0; i < n_html.length - 1; i++) {
+    let current_element = n_html[i]
+    let next_element = n_html[i+1]
+    current_element.onkeyup = () => {
+      current_value = parseFloat(current_element.value);
+      if (current_value*10 > config.upper_limit) {
+        next_element.focus();
+        next_element.select();
+      }
+    }
+  }
+}
+
 (function() {
   populate_config();
   generate_new();
+  setAutoTab();
 })();
