@@ -7,7 +7,7 @@ cp index.html _site/
 
 cd _site
 git init
-git remote add origin 'ssh://git@178.62.18.237/home/git/get24-static.git'
+git remote add origin 'ssh://git@165.22.255.104/home/git/get24-static.git'
 git add .
 git commit -am "new version $(date)" --allow-empty
 git push origin --mirror
