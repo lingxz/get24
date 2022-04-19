@@ -108,7 +108,7 @@ function setAutoTab() {
     let next_element = n_html[i+1]
     current_element.onkeyup = () => {
       current_value = parseFloat(current_element.value);
-      if (current_value*10 > config.upper_limit) {
+      if (current_value === 0 || current_value*10 > config.upper_limit) {
         next_element.focus();
         next_element.select();
       }

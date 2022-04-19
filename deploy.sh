@@ -5,12 +5,6 @@ cp solver.js _site/
 cp styles.css _site/
 cp index.html _site/
 
-cd _site
-git init
-git remote add origin 'ssh://git@165.22.255.104/home/git/get24-static.git'
-git add .
-git commit -am "new version $(date)" --allow-empty
-git push origin --mirror
+scp -r _site/* root@165.22.255.104:/var/www/get24-static
 
-cd ..
 rm -rf _site
